@@ -10,8 +10,16 @@
 ########## Prepare repo for YUM ##########
 
 
-rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+arch=`uname -m`
+OS_MAJOR_VERSION=`sed -rn 's/.*([0-9])\.[0-9].*/\1/p' /etc/redhat-release`
+OS_MINOR_VERSION=`sed -rn 's/.*[0-9].([0-9]).*/\1/p' /etc/redhat-release`
+if [ "$arch" = "x86_64" ]; then
+	if [ "$OS_MAJOR_VERSION" = 5 ]; then
+		rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm;
+    rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm:
+	fi
+fi
+
 
 cat > /etc/yum.repos.d/nginx.repo<<EOF
 [nginx]
