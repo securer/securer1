@@ -41,9 +41,12 @@ useradd myweb --home-dir=/www;
 
 yum -y install yum-fastestmirror;
 
-yum --enablerepo=remi -y install make gcc gcc-c++ patch gcc-g77 flex bison tar unzip ntp pcre perl pcre-devel httpd-devel zlib zlib-devel GeoIP GeoIP-devel openssl openssl openssl-devel
+yum install mysql mysql-server
+/etc/init.d/mysqld restart
+/usr/bin/mysql_secure_installation
+yum install nginx
+yum --enablerepo=remi install php-fpm php-mysql
 
-yum --enablerepo=remi -y install nginx mysql mysql-server php php-common php-fpm php-mysql php-pgsql php-pecl-mongo php-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml php-pecl-apc php-cli php-pear php-pdo
 
 service httpd stop; chkconfig httpd off;
 service nginx start; chkconfig nginx on;
