@@ -54,7 +54,7 @@ yum -y install yum-fastestmirror;
  
 yum --enablerepo=remi -y install make gcc gcc-c++ patch gcc-g77 flex bison tar unzip ntp pcre perl pcre-devel httpd-devel zlib zlib-devel GeoIP GeoIP-devel openssl openssl openssl-devel
  
-yum --enablerepo=remi -y install nginx mysql mysql-server php php-common php-fpm php-mysql php-pecl-mongo php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml php-pecl-apc php-cli php-pear php-pdo
+yum --enablerepo=remi -y install nginx mysql mysql-server php php-common php-fpm php-mysql php-pecl-memcache php-pecl-memcached php-mbstring php-mcrypt
  
 service httpd stop; chkconfig httpd off;
 service nginx start; chkconfig nginx on;
